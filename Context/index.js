@@ -168,81 +168,82 @@ export const StateContextProvider = ({ children }) => {
     }
   };
 
-    //ALL PRESALE
-    const GET_ALL_PRESALE_TOKENS = async () => {
-      try {
-        const address = await connectWallet();
-        const contract = await ICO_MARKETPLACE_CONTARCT();
-  
-        if (address) {
-          setLoader(true);
-          const allPreSaleTokens = await contract.getAllTokens();
-  
-          const _tokenArray = Promise.all(
-            allPreSaleTokens.map(async (token) => {
-              const tokenContract = await TOKEN_CONTARCT(token?.token);
-  
-              const balance = await tokenContract.balanceOf(
-                ICO_MARKETPLACE_ADDRESS
-              );
-  
-              return {
-                creator: token.creator,
-                token: token.token,
-                name: token.name,
-                symbol: token.symbol,
-                supported: token.supported,
-                price: ethers.utils.formatEther(token?.price.toString()),
-                preSaleBal: ethers.utils.formatEther(balance.toString()),
-              };
-            })
-          );
-          setLoader(false);
-          return _tokenArray;
-        }
-      } catch (error) {
-        setLoader(false);
-      }
-    };
+  //ALL PRESALE
+  const GET_ALL_PRESALE_TOKENS = async () => {
+    try {
+      const address = await connectWallet();
+      const contract = await ICO_MARKETPLACE_CONTARCT();
 
-    const GET_ALL_USER_PRESALE_TOKENS = async () => {
-      try {
+      if (address) {
         setLoader(true);
-        const address = await connectWallet();
-        const contract = await ICO_MARKETPLACE_CONTARCT();
-  
-        if (address) {
-          const allPreSaleTokens = await contract.getTokensCreatedBy(address);
-  
-          const _tokenArray = Promise.all(
-            allPreSaleTokens.map(async (token) => {
-              const tokenContract = await TOKEN_CONTARCT(token?.token);
-  
-              const balance = await tokenContract.balanceOf(
-                ICO_MARKETPLACE_ADDRESS
-              );
-  
-              return {
-                creator: token.creator,
-                token: token.token,
-                name: token.name,
-                symbol: token.symbol,
-                supported: token.supported,
-                price: ethers.utils.formatEther(token?.price.toString()),
-                preSaleBal: ethers.utils.formatEther(balance.toString()),
-              };
-            })
-          );
-          setLoader(false);
-          return _tokenArray;
-        }
-      } catch (error) {
-        setLoader(false);
-        console.log(error);
-      }
-    };
+        const allPreSaleTokens = await contract.getAllTokens();
 
-     //CREATE PRESALE
+        const _tokenArray = Promise.all(
+          allPreSaleTokens.map(async (token) => {
+            const tokenContract = await TOKEN_CONTARCT(token?.token);
+
+            const balance = await tokenContract.balanceOf(
+              ICO_MARKETPLACE_ADDRESS
+            );
+
+            return {
+              creator: token.creator,
+              token: token.token,
+              name: token.name,
+              symbol: token.symbol,
+              supported: token.supported,
+              price: ethers.utils.formatEther(token?.price.toString()),
+              preSaleBal: ethers.utils.formatEther(balance.toString()),
+            };
+          })
+        );
+        setLoader(false);
+        return _tokenArray;
+      }
+    } catch (error) {
+      setLoader(false);
+    }
+  };
+
+  //ALL PRESALE
+  const GET_ALL_USER_PRESALE_TOKENS = async () => {
+    try {
+      setLoader(true);
+      const address = await connectWallet();
+      const contract = await ICO_MARKETPLACE_CONTARCT();
+
+      if (address) {
+        const allPreSaleTokens = await contract.getTokensCreatedBy(address);
+
+        const _tokenArray = Promise.all(
+          allPreSaleTokens.map(async (token) => {
+            const tokenContract = await TOKEN_CONTARCT(token?.token);
+
+            const balance = await tokenContract.balanceOf(
+              ICO_MARKETPLACE_ADDRESS
+            );
+
+            return {
+              creator: token.creator,
+              token: token.token,
+              name: token.name,
+              symbol: token.symbol,
+              supported: token.supported,
+              price: ethers.utils.formatEther(token?.price.toString()),
+              preSaleBal: ethers.utils.formatEther(balance.toString()),
+            };
+          })
+        );
+        setLoader(false);
+        return _tokenArray;
+      }
+    } catch (error) {
+      setLoader(false);
+      console.log(error);
+    }
+  };
+
+  //CREATE PRESALE
   const createICOSale = async (preSale) => {
     try {
       const { address, price } = preSale;
@@ -404,11 +405,39 @@ export const StateContextProvider = ({ children }) => {
     }
   };
 
-  
   return (
     <StateContext.Provider
       value={{
-       
+        GET_ALL_PRESALE_TOKENS,
+        GET_ALL_USER_PRESALE_TOKENS,
+        createERC20,
+        connectWallet,
+        shortenAddress,
+        createICOSale,
+        buyToken,
+        transferTokens,
+        withdrawToken,
+        setAddress,
+        //VARIABLE
+        openBuyToken,
+        setOpenBuyToken,
+        openWidthdrawToken,
+        setopenWidthdrawToken,
+        openTransferToken,
+        setOpenTransferToken,
+        openTokenCreator,
+        setOpenTokenCreator,
+        openCreateICO,
+        setOpenCreateICO,
+        address,
+        ICO_MARKETPLACE_ADDRESS,
+        loader,
+        reCall,
+        accountBalance,
+        currency,
+        setLoader,
+        PINATA_AIP_KEY,
+        PINATA_SECRECT_KEY,
       }}
     >
       {children}
