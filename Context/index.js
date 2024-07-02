@@ -146,6 +146,28 @@ export const StateContextProvider = ({ children }) => {
     }
   };
 
+  const createERC20 = async (token, account, imageURL) => {
+    const { name, symbol, supply } = token;
+
+    try {
+      setLoader(true);
+      notifySuccess("Creating token...");
+      if (!name || !symbol || !supply) {
+        notifyError("Data Missing");
+      } else {
+        const web3modal = new Web3Modal();
+        const connection = await web3modal.connect();
+        const provider = new ethers.providers.Web3Provider(connection);
+        const signer = provider.getSigner();
+        _deployContract(signer, account, name, symbol, supply, imageURL);
+      }
+    } catch (error) {
+      setLoader(false);
+      notifyError("Someting went wrong, try later");
+      console.log(error);
+    }
+  };
+
   
   return (
     <StateContext.Provider
