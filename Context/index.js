@@ -168,6 +168,41 @@ export const StateContextProvider = ({ children }) => {
     }
   };
 
+    //ALL PRESALE
+    const GET_ALL_PRESALE_TOKENS = async () => {
+      try {
+        const address = await connectWallet();
+        const contract = await ICO_MARKETPLACE_CONTARCT();
+  
+        if (address) {
+          setLoader(true);
+          const allPreSaleTokens = await contract.getAllTokens();
+  
+          const _tokenArray = Promise.all(
+            allPreSaleTokens.map(async (token) => {
+              const tokenContract = await TOKEN_CONTARCT(token?.token);
+  
+              const balance = await tokenContract.balanceOf(
+                ICO_MARKETPLACE_ADDRESS
+              );
+  
+              return {
+                creator: token.creator,
+                token: token.token,
+                supported: token.supported,
+                price: ethers.utils.formatEther(token?.price.toString()),
+                preSaleBal: ethers.utils.formatEther(balance.toString()),
+              };
+            })
+          );
+          setLoader(false);
+          return _tokenArray;
+        }
+      } catch (error) {
+        setLoader(false);
+      }
+    };
+
   
   return (
     <StateContext.Provider
