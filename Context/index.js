@@ -189,6 +189,8 @@ export const StateContextProvider = ({ children }) => {
               return {
                 creator: token.creator,
                 token: token.token,
+                name: token.name,
+                symbol: token.symbol,
                 supported: token.supported,
                 price: ethers.utils.formatEther(token?.price.toString()),
                 preSaleBal: ethers.utils.formatEther(balance.toString()),
