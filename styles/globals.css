@@ -83,7 +83,7 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font: Helvetica;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -261,7 +261,7 @@ a {
   border: none;
   cursor: pointer;
   box-shadow: 0 0.5rem 1rem rgba(143, 142, 142, 0.15) !important;
-  background: #000000;
+  background: #2e2d2d;
   width: 100%;
 }
 
