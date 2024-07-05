@@ -24,7 +24,7 @@ export const StateContextProvider = ({ children }) => {
   const [accountBalance, setAccountBalance] = useState(null);
   const [loader, setLoader] = useState(false);
   const [reCall, setReCall] = useState(0);
-  const [currency, setCurrency] = useState("ETH");
+  const [currency, setCurrency] = useState("fxETH");
 
   //COMPONENT
   const [openBuyToken, setOpenBuyToken] = useState(false);
@@ -69,7 +69,7 @@ export const StateContextProvider = ({ children }) => {
   const connectWallet = async () => {
     try {
       if (!window.ethereum) return console.log("Install MateMask");
-      const network = await handleNetworkSwitch();
+
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });

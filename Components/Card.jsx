@@ -38,25 +38,25 @@ const Card = ({
     {
       title: "Create Token",
       description:
-        "Creating a token involves defining it on a blockchain platform, such as Ethereum, Binance Smart Chain, or others that support smart contracts",
+        "Creating a token that represents share on your organisation ",
       btnName: "Create Token",
     },
     {
       title: "History",
       description:
-        "To create a token that logs the history of token creation by a single user, we can extend the ERC-20 contract with additional functionality to record each instance a user mints new tokens",
+        " logs the history of token creation by a user",
       btnName: "Get Token History",
     },
     {
       title: "Transfer Token",
       description:
-        "To enable the transfer of tokens between users within your smart contract, you'll need to implement functions that allow token holders to send tokens to others",
+        "you can also send token directly to ico contract adress through your wallet",
       btnName: "Transfer Token",
     },
     {
       title: "Widthdraw Token",
       description:
-        "To enable the transfer of tokens between users within your smart contract, you'll need to implement functions that allow token holders to send tokens to others",
+        "to reduce the number of token in supply potentially increasing proce of each share/token",
       btnName: "Widthdraw Token",
     },
   ];

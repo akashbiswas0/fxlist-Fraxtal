@@ -1,5 +1,5 @@
 {
-  "name": "g",
+  "name": "c",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,15 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "ethers": "^6.13.1",
-    "next": "14.2.4",
-    "react": "^18",
-    "react-dom": "^18",
+    "@next/font": "13.4.13",
+    "axios": "^1.6.8",
+    "ethers": "^5.7.2",
+    "next": "13.4.13",
+    "qrcode.react": "^3.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-hot-toast": "^2.4.1",
-    "web3modal": "^1.9.12"
-  },
-  "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4"
+    "react-icons": "^4.10.1",
+    "web3modal": "^1.9.9"
   }
 }
