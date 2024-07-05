@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 //INTERNAL IMPORt
 import UploadLogo from "../Components/UploadLogo";
-import Input from "../../../04/g/Components/Input";
-import Button from "../../../04/g/Components/Button";
+import Input from "../Components/Input";
+import Button from "../Components/Button";
 
 const TokenCreator = ({
   shortenAddress,
