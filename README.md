@@ -1,4 +1,4 @@
-# FxList ~ Dcentralized Initial Coin Offering Platform and on Fraxtal 
+# FxList ~ Dcentralized Initial Coin Offering Platform  on Fraxtal 
 
 ## Introduction
 
