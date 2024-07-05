@@ -54,6 +54,7 @@ Building this project on the Fraxtal mainnet offers several key advantages:
 
 ## Contract details
 - `Contract Address` : **0xa79a6326251b0051788dca2337137afc678c2a7b**
+- Explorer URL : https://fraxscan.com/address/0xa79a6326251b0051788dca2337137afc678c2a7b
 
 ## Sequence Diagram of FxList
 ```mermaid
